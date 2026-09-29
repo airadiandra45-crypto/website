@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Norelle - Contact</title>
+
+    <style>
+
+        /* =========================================
+           COLOR PALETTE
+        ========================================= */
+
+        :root {
+            --primary: #F3F3F3;
+            --secondary: #656565;
+            --typography: #302F2F;
+            --white: #FFFFFF;
+            --black: #000000;
+        }
+
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+           min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        footer {
+            flex-shrink: 0;
+        }
+
+
+        /* =========================================
+           NAVBAR
+        ========================================= */
+
+        .navbar {
+            width: 100%;
+            height: 80px;
+            background: var(--white);
+            border-bottom: 1px solid #dddddd;
+
+            display: flex;
+            align-items: center;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-container {
+            width: 92%;
+            max-width: 1500px;
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        /* LOGO */
+
+        .logo {
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 45px;
+            font-weight: bold;
+
+            letter-spacing: -1px;
+
+            color: var(--typography);
+        }
+
+
+        /* NAV LINKS */
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 55px;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+
+            position: relative;
+
+            padding: 30px 0;
+
+            color: var(--typography);
+        }
+
+        .nav-links a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: 20px;
+
+            width: 0;
+            height: 1px;
+
+            background: var(--typography);
+
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+
+        /* NAV ICONS */
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+
+            gap: 25px;
+        }
+
+        .nav-icon {
+            width: 22px;
+            height: 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: var(--typography);
+
+            transition: 0.3s;
+        }
+
+        .nav-icon:hover {
+            opacity: 0.5;
+        }
+
+        .nav-icon svg {
+            width: 20px;
+            height: 20px;
+
+            stroke: currentColor;
+            fill: none;
+
+            stroke-width: 1.5;
+        }
+
+        /* =========================
+           SEARCH AREA
+        ========================= */
+
+        .search-section {
+            padding: 32px 30px 20px;
+        }
+
+
+        .search-box {
+            width: 100%;
+
+            height: 43px;
+
+            border: 1px solid #656565;
+
+            background: #ffffff;
+
+            padding: 0 12px;
+
+            font-size: 16px;
+
+            color: #302F2F;
+
+            outline: none;
+        }
+
+
+        .search-box:focus {
+            border-color: #302F2F;
+        }
+
+
+        .search-box::placeholder {
+            color: #656565;
+        }
+
+
+        /* =========================
+           TRENDING NOW
+        ========================= */
+
+        .trending-title {
+            text-align: center;
+
+            margin: 30px 0 40px;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            color: #302F2F;
+        }
+
+
+        /* =========================
+           PRODUCTS
+        ========================= */
+
+        .products-wrapper {
+            padding: 0 30px 38px;
+
+            overflow: hidden;
+        }
+
+
+        .products {
+            display: grid;
+
+            grid-template-columns: repeat(6, 1fr);
+
+            gap: 18px;
+        }
+
+
+        /* =========================
+           PRODUCT CARD
+        ========================= */
+
+        .product-card {
+            min-width: 0;
+
+            position: relative;
+        }
+
+
+        .product-image {
+            width: 100%;
+
+            height: 142px;
+
+            background: #ffffff;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            overflow: hidden;
+        }
+
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+            display: block;
+        }
+
+
+        .product-info {
+            padding-top: 7px;
+        }
+
+
+        .brand {
+            font-size: 12px;
+
+            font-weight: 500;
+
+            margin-bottom: 5px;
+
+            color: #302F2F;
+        }
+
+
+        .product-name {
+            font-size: 11px;
+
+            line-height: 1.35;
+
+            color: #656565;
+
+            min-height: 30px;
+        }
+
+
+        .price {
+            margin-top: 4px;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            color: #302F2F;
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .footer {
+            width: 100%;
+
+            background: var(--typography);
+
+            color: white;
+
+            padding: 30px 0 22px;
+        }
+
+        .footer-container {
+            width: 92%;
+            max-width: 1500px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                1.3fr
+                1fr
+                1fr
+                1fr
+                1fr;
+
+            gap: 45px;
+        }
+
+        .footer-column {
+            display: flex;
+
+            flex-direction: column;
+        }
+
+        .footer-logo {
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 32px;
+
+            font-weight: bold;
+
+            margin-bottom: 14px;
+        }
+
+        .footer-description {
+            font-size: 13px;
+
+            line-height: 1.8;
+
+            color: #dddddd;
+        }
+
+        .footer-column h3 {
+            font-size: 14px;
+
+            margin-bottom: 15px;
+
+            font-weight: bold;
+        }
+
+        .footer-column > a {
+            font-size: 13px;
+
+            color: #dddddd;
+
+            margin-bottom: 9px;
+
+            transition: 0.2s;
+        }
+
+        .footer-column > a:hover {
+            color: white;
+        }
+
+        /* =========================================
+           SOCIAL MEDIA
+        ========================================= */
+
+        .social-icons {
+            display: flex;
+
+            align-items: center;
+
+            gap: 16px;
+        }
+
+        .social-icon {
+            width: 20px;
+            height: 20px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-icon svg {
+            width: 18px;
+            height: 18px;
+
+            stroke: white;
+            fill: none;
+
+            stroke-width: 1.5;
+        }
+
+        .social-icon:hover {
+            opacity: 0.6;
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+@media (max-width: 1000px) {
+
+            .navbar {
+                padding: 0 40px;
+            }
+
+            .logo {
+                font-size: 45px;
+            }
+
+            .nav-links {
+                gap: 35px;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+            }
+
+            .products {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+
+        @media (max-width: 750px) {
+
+            .navbar {
+                height: auto;
+
+                min-height: 80px;
+
+                padding: 15px 25px;
+
+                flex-wrap: wrap;
+            }
+
+            .logo {
+                font-size: 38px;
+            }
+
+            .nav-links {
+                position: static;
+
+                transform: none;
+
+                order: 3;
+
+                width: 100%;
+
+                justify-content: center;
+
+                gap: 25px;
+            }
+
+            .nav-links a {
+                padding: 10px 0;
+
+                font-size: 13px;
+            }
+
+            .nav-icons {
+                gap: 16px;
+            }
+
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+
+    <!-- =========================================
+         NAVBAR
+    ========================================= -->
+
+    <header class="navbar">
+
+        <div class="navbar-container">
+
+
+            <!-- LOGO -->
+
+            <a href="search.html" class="logo">
+                Norelle
+            </a>
+
+
+            <!-- MENU -->
+
+            <nav class="nav-links">
+
+                <a href="index.html">
+                    HOME
+                </a>
+
+                <a href="shop.html">
+                    SHOP
+                </a>
+
+                <a href="wanita.html">
+                    WANITA
+                </a>
+
+                <a href="pria.html">
+                    PRIA
+                </a>
+
+                <a href="contact.html">
+                    CONTACT
+                </a>
+
+            </nav>
+
+
+            <!-- ICON -->
+
+            <div class="nav-icons">
+
+
+                <!-- SEARCH -->
+
+                <a
+                    href="search.html"
+                    class="nav-icon"
+                    aria-label="Search"
+                >
+
+                    <svg viewBox="0 0 24 24">
+
+                        <circle
+                            cx="11"
+                            cy="11"
+                            r="6"
+                        ></circle>
+
+                        <line
+                            x1="16"
+                            y1="16"
+                            x2="21"
+                            y2="21"
+                        ></line>
+
+                    </svg>
+
+                </a>
+
+
+                <!-- PROFILE -->
+
+                <a
+                    href="profile.html"
+                    class="nav-icon"
+                    aria-label="Profile"
+                >
+
+                    <svg viewBox="0 0 24 24">
+
+                        <circle
+                            cx="12"
+                            cy="8"
+                            r="3"
+                        ></circle>
+
+                        <path
+                            d="M5 21c0-4 3-7 7-7s7 3 7 7"
+                        ></path>
+
+                    </svg>
+
+                </a>
+
+
+                <!-- CART -->
+
+                <a
+                    href="cart.html"
+                    class="nav-icon"
+                    aria-label="Cart"
+                >
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path
+                            d="M5 8h14l-1 12H6L5 8z"
+                        ></path>
+
+                        <path
+                            d="M9 8V5a3 3 0 0 1 6 0v3"
+                        ></path>
+
+                    </svg>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- =====================================
+         SEARCH
+    ====================================== -->
+
+    <main>
+
+        <section class="search-section">
+
+            <input
+                type="text"
+                class="search-box"
+                placeholder="Search"
+            >
+
+        </section>
+
+
+
+        <!-- =====================================
+             TRENDING NOW
+        ====================================== -->
+
+        <h2 class="trending-title">
+            TRENDING NOW
+        </h2>
+
+
+        <section class="products-wrapper">
+
+            <div class="products">
+
+
+                <!-- PRODUCT 1 -->
+
+            <!-- PRODUCT 1 -->
+
+            <article class="product-card">
+
+                <a href="product-detail.html">
+
+                    <div class="product-image">
+
+                        <img
+                            src="assets/images/Trend Hoodie.jpg"
+                            alt="HOODIE"
+                        >
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <div class="product-name">
+                            NORELLE
+                        </div>
+
+                        <div class="product-description">
+                            Hoodie Boxy Pocket
+                            Motif Paradise
+                        </div>
+
+                        <div class="product-price">
+                            Rp. 300.000
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </article>
+
+
+
+            <!-- PRODUCT 2 -->
+
+            <article class="product-card">
+
+                <a href="product-detail.html">
+
+                    <div class="product-image">
+
+                        <img
+                            src="assets/images/Trend T-Shirt.jpg"
+                            alt="T-SHIRT"
+                        >
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <div class="product-name">
+                            NORELLE
+                        </div>
+
+                        <div class="product-description">
+                            T Shirt Spread Light
+                        </div>
+
+                        <div class="product-price">
+                            Rp. 179.000
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </article>
+
+            <!-- PRODUCT 3 -->
+
+            <article class="product-card">
+
+                <a href="product-detail.html">
+
+                    <div class="product-image">
+
+                        <img
+                            src="assets/images/Trend Pants 2.jpg"
+                            alt="SWEATPANTS JEANS"
+                        >
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <div class="product-name">
+                            NORELLE
+                        </div>
+
+                        <div class="product-description">
+                            Tie dye - Loose Jeans
+                        </div>
+
+                        <div class="product-price">
+                            Rp. 134.000
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </article>
+
+
+            <!-- PRODUCT 4 -->
+
+            <article class="product-card">
+
+                <a href="product-detail.html">
+
+                    <div class="product-image">
+                        
+                        <img
+                            src="assets/images/Trend Sweater.jpg"
+                            alt="SWEATER"
+                        >
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <div class="product-name">
+                            NORELLE
+                        </div>
+
+                        <div class="product-description">
+                            Cardigan Knitwear - CREWNECK MONTANA
+                        </div>
+
+                        <div class="product-price">
+                            Rp. 154.000
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </article>
+
+
+
+            <!-- PRODUCT 5 -->
+
+            <article class="product-card">
+
+                <a href="product-detail.html">
+
+                    <div class="product-image">
+                        
+                        <img
+                            src="assets/images/Trend Jacket.jpg"
+                            alt="JACKET"
+                        >
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <div class="product-name">
+                            NORELLE
+                        </div>
+
+                        <div class="product-description">
+                            Cheongsam Track Jacket Suede Unisex
+                        </div>
+
+                        <div class="product-price">
+                            Rp. 338.000
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </article>
+
+            <!-- PRODUCT 6 -->
+
+            <article class="product-card">
+
+                <a href="product-detail.html">
+
+                    <div class="product-image">
+                        
+                        <img
+                            src="assets/images/Trend Jacket 2.jpg"
+                            alt="JACKET"
+                        >
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <div class="product-name">
+                            NORELLE
+                        </div>
+
+                        <div class="product-description">
+                            Work Jacket Boxy - Basic Unisex
+                        </div>
+
+                        <div class="product-price">
+                            Rp. 350.000
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    
+    <!-- =========================================
+         FOOTER
+    ========================================= -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+
+            <!-- BRAND -->
+
+            <div class="footer-column">
+
+                <div class="footer-logo">
+                    Norelle
+                </div>
+
+                <p class="footer-description">
+
+                    Streetwear for every moment.<br>
+
+                    Made for those who define<br>
+
+                    their own style.
+
+                </p>
+
+            </div>
+
+
+            <!-- SHOP -->
+
+            <div class="footer-column">
+
+                <h3>
+                    SHOP
+                </h3>
+
+                <a href="shop.html">
+                    All Products
+                </a>
+
+                <a href="shop.html">
+                    Hoodie
+                </a>
+
+                <a href="shop.html">
+                    T-Shirt
+                </a>
+
+                <a href="shop.html">
+                    Pants
+                </a>
+
+                <a href="shop.html">
+                    Jackets
+                </a>
+
+            </div>
+
+
+            <!-- HELP -->
+
+            <div class="footer-column">
+
+                <h3>
+                    HELP
+                </h3>
+
+                <a href="#">
+                    FAQ
+                </a>
+
+                <a href="#">
+                    Shopping
+                </a>
+
+                <a href="#">
+                    Returns
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <!-- COMPANY -->
+
+            <div class="footer-column">
+
+                <h3>
+                    COMPANY
+                </h3>
+
+                <a href="#">
+                    About Us
+                </a>
+
+                <a href="#">
+                    Privacy Policy
+                </a>
+
+                <a href="#">
+                    Terms of Service
+                </a>
+
+            </div>
+
+
+            <!-- FOLLOW US -->
+
+            <div class="footer-column">
+
+                <h3>
+                    FOLLOW US
+                </h3>
+
+
+                <div class="social-icons">
+
+
+                    <!-- INSTAGRAM -->
+
+                    <a
+                        href="#"
+                        class="social-icon"
+                    >
+
+                        <svg viewBox="0 0 24 24">
+
+                            <rect
+                                x="3"
+                                y="3"
+                                width="18"
+                                height="18"
+                                rx="5"
+                            ></rect>
+
+                            <circle
+                                cx="12"
+                                cy="12"
+                                r="4"
+                            ></circle>
+
+                            <circle
+                                cx="17.5"
+                                cy="6.5"
+                                r="1"
+                            ></circle>
+
+                        </svg>
+
+                    </a>
+
+
+                    <!-- TIKTOK -->
+
+                    <a
+                        href="#"
+                        class="social-icon"
+                    >
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M15 4v10.5a4.5 4.5 0 1 1-3.5-4.4"
+                            ></path>
+
+                            <path
+                                d="M15 4c.7 2.3 2.2 3.7 4.5 4"
+                            ></path>
+
+                        </svg>
+
+                    </a>
+
+
+                    <!-- YOUTUBE -->
+
+                    <a
+                        href="#"
+                        class="social-icon"
+                    >
+
+                        <svg viewBox="0 0 24 24">
+
+                            <rect
+                                x="3"
+                                y="6"
+                                width="18"
+                                height="12"
+                                rx="3"
+                            ></rect>
+
+                            <polygon
+                                points="10,9 10,15 15,12"
+                            ></polygon>
+
+                        </svg>
+
+                    </a>
+
+
+                    <!-- FACEBOOK -->
+
+                    <a
+                        href="#"
+                        class="social-icon"
+                    >
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.7.3-1 1-1z"
+                            ></path>
+
+                        </svg>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+</body>
+
+</html>

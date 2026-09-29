@@ -1,0 +1,1916 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Product Detail - Norelle</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #F3F3F3;
+
+            color: #302F2F;
+
+            min-height: 100vh;
+
+        }
+
+        a {
+
+            text-decoration: none;
+
+            color: inherit;
+
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+
+            width: 100%;
+
+            height: 88px;
+
+            background: #ffffff;
+
+            border-bottom: 1px solid #dddddd;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 80px;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+        }
+
+
+        .logo {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 42px;
+
+            font-weight: bold;
+
+            color: #302F2F;
+
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 48px;
+
+        }
+
+
+        .nav-links a {
+
+            font-size: 15px;
+
+            color: #302F2F;
+
+            position: relative;
+
+            padding: 34px 0;
+
+        }
+
+
+        .nav-links a:hover {
+
+            color: #656565;
+
+        }
+
+
+        .nav-icons {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 24px;
+
+        }
+
+
+        .nav-icons a {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .nav-icons svg {
+
+            width: 21px;
+
+            height: 21px;
+
+            stroke: #302F2F;
+
+            stroke-width: 1.8;
+
+            fill: none;
+
+        }
+
+
+        /* =====================================================
+           PRODUCT DETAIL
+        ===================================================== */
+
+        .product-detail {
+
+            width: 92%;
+
+            max-width: 1400px;
+
+            margin: 0 auto;
+
+            padding: 45px 0 70px;
+
+            display: grid;
+
+            grid-template-columns: 55% 45%;
+
+            align-items: start;
+
+        }
+
+
+        /* =====================================================
+           KEMBALI KE PRIA
+        ===================================================== */
+
+        .back-shop {
+
+            grid-column: 1 / -1;
+
+            display: block;
+
+            width: fit-content;
+
+            color: #302F2F;
+
+            font-size: 20px;
+
+            margin-bottom: 25px;
+
+            cursor: pointer;
+
+        }
+
+
+        .back-shop:hover {
+
+            opacity: .6;
+
+        }
+
+
+        /* =====================================================
+           PRODUCT GALLERY
+        ===================================================== */
+
+        .product-gallery {
+
+            grid-column: 1;
+
+            display: flex;
+
+            align-items: flex-start;
+
+            justify-content: center;
+
+            gap: 20px;
+
+            background: #f5f5f5;
+
+            min-height: 600px;
+
+            padding: 30px;
+
+        }
+
+
+        .thumbnail-list {
+
+            width: 78px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+
+        }
+
+
+        .thumbnail {
+
+            width: 78px;
+
+            height: 95px;
+
+            background: #ffffff;
+
+            border: 1px solid #dddddd;
+
+            overflow: hidden;
+
+            cursor: pointer;
+
+        }
+
+
+        .thumbnail.active {
+
+            border: 1px solid #302F2F;
+
+        }
+
+
+        .thumbnail img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+        }
+
+
+        .main-image {
+
+            flex: 1;
+
+            height: 540px;
+
+            background: #ffffff;
+
+            overflow: hidden;
+
+        }
+
+
+        .main-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+        }
+
+
+        /* =====================================================
+           PRODUCT INFO
+        ===================================================== */
+
+        .product-info {
+
+            grid-column: 2;
+
+            padding: 0 0 0 45px;
+
+        }
+
+
+        .brand {
+
+            font-size: 15px;
+
+            letter-spacing: 2px;
+
+            color: #656565;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .product-title {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 40px;
+
+            font-weight: normal;
+
+            line-height: 1.2;
+
+            color: #302F2F;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .product-price {
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .product-description {
+
+            color: #656565;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+
+            margin-bottom: 35px;
+
+        }
+
+
+        /* =====================================================
+           SIZE
+        ===================================================== */
+
+        .option-title {
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 14px;
+
+        }
+
+
+        .size-options {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .size-btn {
+
+            width: 50px;
+
+            height: 42px;
+
+            border: 1px solid #cccccc;
+
+            background: #ffffff;
+
+            color: #302F2F;
+
+            cursor: pointer;
+
+        }
+
+
+        .size-btn:hover {
+
+            border-color: #302F2F;
+
+        }
+
+
+        .size-btn.active {
+
+            background: #302F2F;
+
+            color: #ffffff;
+
+            border-color: #302F2F;
+
+        }
+
+
+        /* =====================================================
+           COLOR
+        ===================================================== */
+
+        .color-section {
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .color-options {
+
+            display: flex;
+
+            gap: 13px;
+
+        }
+
+
+        .color-btn {
+
+            width: 28px;
+
+            height: 28px;
+
+            border-radius: 50%;
+
+            border: 2px solid white;
+
+            outline: 1px solid #cccccc;
+
+            cursor: pointer;
+
+        }
+
+
+        .color-btn.active {
+
+            outline:
+                2px solid #302F2F;
+
+            outline-offset: 2px;
+
+        }
+
+
+        .color-black {
+
+            background: #202020;
+
+        }
+
+
+        .color-grey {
+
+            background: #777777;
+
+        }
+
+
+        .color-white {
+
+            background: #ffffff;
+
+        }
+
+
+        /* =====================================================
+           QUANTITY
+        ===================================================== */
+
+        .quantity-title {
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .quantity-box {
+
+            width: 135px;
+
+            height: 45px;
+
+            border: 1px solid #cccccc;
+
+            background: white;
+
+            display: flex;
+
+            align-items: center;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .quantity-box button {
+
+            width: 42px;
+
+            height: 100%;
+
+            border: none;
+
+            background: transparent;
+
+            font-size: 18px;
+
+            cursor: pointer;
+
+        }
+
+
+        .quantity-box span {
+
+            flex: 1;
+
+            text-align: center;
+
+        }
+
+
+        /* =====================================================
+           BUTTON
+        ===================================================== */
+
+        .action-buttons {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-bottom: 35px;
+
+        }
+
+
+        .add-cart {
+
+            flex: 1;
+
+            height: 52px;
+
+            background: #302F2F;
+
+            color: #ffffff;
+
+            border: none;
+
+            cursor: pointer;
+
+            font-size: 13px;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .add-cart:hover {
+
+            background: #656565;
+
+        }
+
+
+        .wishlist {
+
+            width: 55px;
+
+            height: 52px;
+
+            background: transparent;
+
+            border: 1px solid #302F2F;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+        }
+
+
+        .wishlist:hover {
+
+            background: #302F2F;
+
+            color: #ffffff;
+
+        }
+
+
+        /* =====================================================
+           DETAILS
+        ===================================================== */
+
+        .details {
+
+            border-top: 1px solid #d5d5d5;
+
+        }
+
+
+        .detail-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            padding: 17px 0;
+
+            border-bottom: 1px solid #d5d5d5;
+
+            font-size: 13px;
+
+        }
+
+
+        .detail-row span:last-child {
+
+            color: #656565;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .footer {
+
+            background: #302F2F;
+
+            color: #ffffff;
+
+            padding: 70px 50px 100px;
+
+        }
+
+
+        .footer-container {
+
+            max-width: 1400px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                1.5fr 1fr 1fr 1fr;
+
+            gap: 60px;
+
+        }
+
+
+        .footer-logo {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 38px;
+
+            font-weight: bold;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .footer-description {
+
+            color: #dddddd;
+
+            font-size: 13px;
+
+            line-height: 1.8;
+
+        }
+
+
+        .footer-column h3 {
+
+            font-size: 14px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .footer-column a {
+
+            display: block;
+
+            color: #dddddd;
+
+            font-size: 13px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1000px) {
+
+            .navbar {
+
+                padding: 0 35px;
+
+            }
+
+
+            .nav-links {
+
+                gap: 25px;
+
+            }
+
+
+            .product-detail {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .product-gallery {
+
+                grid-column: 1;
+
+            }
+
+
+            .product-info {
+
+                grid-column: 1;
+
+                padding: 40px 0 0;
+
+            }
+
+
+            .footer-container {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            .navbar {
+
+                height: auto;
+
+                padding: 18px 20px;
+
+                flex-wrap: wrap;
+
+            }
+
+
+            .logo {
+
+                font-size: 34px;
+
+            }
+
+
+            .nav-links {
+
+                width: 100%;
+
+                order: 3;
+
+                justify-content: center;
+
+                gap: 15px;
+
+            }
+
+
+            .nav-links a {
+
+                padding: 8px 0;
+
+                font-size: 12px;
+
+            }
+
+
+            .product-detail {
+
+                padding:
+                    30px 20px 70px;
+
+            }
+
+
+            .product-gallery {
+
+                grid-template-columns:
+                    65px 1fr;
+
+            }
+
+
+            .thumbnail {
+
+                width: 58px;
+
+                height: 70px;
+
+            }
+
+
+            .product-title {
+
+                font-size: 30px;
+
+            }
+
+
+            .footer-container {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar">
+
+
+    <a
+        href="index.html"
+        class="logo">
+
+        Norelle
+
+    </a>
+
+
+    <nav class="nav-links">
+
+
+        <a href="index.html">
+            HOME
+        </a>
+
+
+        <a href="shop.html">
+            SHOP
+        </a>
+
+
+        <a href="wanita.html">
+            WANITA
+        </a>
+
+
+        <a href="pria.html">
+            PRIA
+        </a>
+
+
+        <a href="contact.html">
+            CONTACT
+        </a>
+
+
+    </nav>
+
+
+    <div class="nav-icons">
+
+
+        <a href="search.html">
+
+            <svg viewBox="0 0 24 24">
+
+                <circle
+                    cx="11"
+                    cy="11"
+                    r="6.5">
+                </circle>
+
+                <line
+                    x1="16"
+                    y1="16"
+                    x2="21"
+                    y2="21">
+                </line>
+
+            </svg>
+
+        </a>
+
+
+        <a href="profile.html">
+
+            <svg viewBox="0 0 24 24">
+
+                <circle
+                    cx="12"
+                    cy="7"
+                    r="3.5">
+                </circle>
+
+                <path
+                    d="M5 21c0-4 3-6 7-6s7 2 7 6">
+                </path>
+
+            </svg>
+
+        </a>
+
+
+        <a href="cart.html">
+
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M5 8h14l-1 12H6L5 8z">
+                </path>
+
+                <path
+                    d="M9 8V6a3 3 0 0 1 6 0v2">
+                </path>
+
+            </svg>
+
+        </a>
+
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     PRODUCT DETAIL
+===================================================== -->
+
+<main class="product-detail">
+
+
+    <!-- KEMBALI KE PRIA -->
+
+    <a
+        href="pria.html"
+        class="back-shop">
+
+        ← Kembali ke Pria
+
+    </a>
+
+
+    <!-- =================================================
+         IMAGE
+    ================================================== -->
+
+    <div class="product-gallery">
+
+
+        <div
+            class="thumbnail-list"
+            id="thumbnailList">
+        </div>
+
+
+        <div class="main-image">
+
+            <img
+                id="mainProductImage"
+                src=""
+                alt="Product">
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         INFORMATION
+    ================================================== -->
+
+    <div class="product-info">
+
+
+        <div class="brand">
+
+            NORELLE
+
+        </div>
+
+
+        <h1
+            class="product-title"
+            id="productTitle">
+
+            Product
+
+        </h1>
+
+
+        <div
+            class="product-price"
+            id="productPrice">
+
+            Rp. 0
+
+        </div>
+
+
+        <p
+            class="product-description"
+            id="productDescription">
+
+            Product description.
+
+        </p>
+
+
+        <!-- SIZE -->
+
+        <div class="option-title">
+
+            SIZE
+
+        </div>
+
+
+        <div class="size-options">
+
+
+            <button
+                class="size-btn"
+                onclick="selectSize(this)">
+
+                S
+
+            </button>
+
+
+            <button
+                class="size-btn active"
+                onclick="selectSize(this)">
+
+                M
+
+            </button>
+
+
+            <button
+                class="size-btn"
+                onclick="selectSize(this)">
+
+                L
+
+            </button>
+
+
+            <button
+                class="size-btn"
+                onclick="selectSize(this)">
+
+                XL
+
+            </button>
+
+
+            <button
+                class="size-btn"
+                onclick="selectSize(this)">
+
+                XXL
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- COLOR -->
+
+        <div class="color-section">
+
+
+            <div class="option-title">
+
+                COLOR
+
+            </div>
+
+
+            <div class="color-options">
+
+
+                <button
+                    class="color-btn color-black active"
+                    onclick="selectColor(this)">
+                </button>
+
+
+                <button
+                    class="color-btn color-grey"
+                    onclick="selectColor(this)">
+                </button>
+
+
+                <button
+                    class="color-btn color-white"
+                    onclick="selectColor(this)">
+                </button>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- QUANTITY -->
+
+        <div class="quantity-title">
+
+            QUANTITY
+
+        </div>
+
+
+        <div class="quantity-box">
+
+
+            <button
+                onclick="decreaseQuantity()">
+
+                −
+
+            </button>
+
+
+            <span id="quantity">
+
+                1
+
+            </span>
+
+
+            <button
+                onclick="increaseQuantity()">
+
+                +
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- ACTION -->
+
+        <div class="action-buttons">
+
+
+            <button
+                class="add-cart"
+                onclick="addToCart()">
+
+                ADD TO CART
+
+            </button>
+
+
+            <button
+                class="wishlist"
+                onclick="wishlist()">
+
+                ♡
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- DETAILS -->
+
+        <div class="details">
+
+
+            <div class="detail-row">
+
+                <span>
+                    Details
+                </span>
+
+                <span id="productType">
+                    Streetwear
+                </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span>
+                    Material
+                </span>
+
+                <span>
+                    Premium Cotton
+                </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span>
+                    Fit
+                </span>
+
+                <span>
+                    Regular Fit
+                </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span>
+                    Shipping
+                </span>
+
+                <span>
+                    2–5 Working Days
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+
+    <div class="footer-container">
+
+
+        <div class="footer-column">
+
+            <div class="footer-logo">
+
+                Norelle
+
+            </div>
+
+
+            <p class="footer-description">
+
+                Streetwear for every moment.<br>
+
+                Made for those who define<br>
+
+                their own style.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+            <h3>
+                SHOP
+            </h3>
+
+
+            <a href="pria.html">
+                All Products
+            </a>
+
+
+            <a href="pria.html">
+                Hoodie
+            </a>
+
+
+            <a href="pria.html">
+                T-Shirt
+            </a>
+
+
+            <a href="pria.html">
+                Pants
+            </a>
+
+
+            <a href="pria.html">
+                Jackets
+            </a>
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+            <h3>
+                HELP
+            </h3>
+
+
+            <a href="#">
+                FAQ
+            </a>
+
+
+            <a href="#">
+                Shopping
+            </a>
+
+
+            <a href="#">
+                Returns
+            </a>
+
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+            <h3>
+                COMPANY
+            </h3>
+
+
+            <a href="#">
+                About Us
+            </a>
+
+
+            <a href="#">
+                Privacy Policy
+            </a>
+
+
+            <a href="#">
+                Terms of Service
+            </a>
+
+        </div>
+
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   AMBIL DATA PRODUK DARI PRIA.HTML
+===================================================== */
+
+const selectedProduct =
+    sessionStorage.getItem(
+        "selectedProduct"
+    );
+
+
+/* =====================================================
+   JIKA TIDAK ADA DATA
+===================================================== */
+
+if (!selectedProduct) {
+
+    window.location.href =
+        "pria.html";
+
+}
+
+
+/* =====================================================
+   PARSE DATA
+===================================================== */
+
+const product =
+    JSON.parse(
+        selectedProduct
+    );
+
+
+/* =====================================================
+   NAMA
+===================================================== */
+
+document.getElementById(
+    "productTitle"
+).textContent =
+    product.name;
+
+
+/* =====================================================
+   HARGA
+===================================================== */
+
+document.getElementById(
+    "productPrice"
+).textContent =
+    product.price;
+
+
+/* =====================================================
+   GAMBAR
+===================================================== */
+
+const mainImage =
+    document.getElementById(
+        "mainProductImage"
+    );
+
+
+mainImage.src =
+    product.image;
+
+
+mainImage.alt =
+    product.name;
+
+
+/* =====================================================
+   TYPE
+===================================================== */
+
+document.getElementById(
+    "productType"
+).textContent =
+    product.type;
+
+
+/* =====================================================
+   DESKRIPSI
+===================================================== */
+
+document.getElementById(
+    "productDescription"
+).textContent =
+
+    "Produk " +
+    product.type +
+    " dari NORELLE dengan desain " +
+    product.name +
+    ". Cocok digunakan untuk aktivitas sehari-hari dengan gaya streetwear yang modern dan nyaman.";
+
+
+/* =====================================================
+   THUMBNAIL
+===================================================== */
+
+const thumbnailList =
+    document.getElementById(
+        "thumbnailList"
+    );
+
+
+const thumbnail =
+    document.createElement(
+        "div"
+    );
+
+
+thumbnail.className =
+    "thumbnail active";
+
+
+thumbnail.onclick =
+    function () {
+
+        changeImage(
+            product.image,
+            this
+        );
+
+    };
+
+
+const thumbnailImage =
+    document.createElement(
+        "img"
+    );
+
+
+thumbnailImage.src =
+    product.image;
+
+
+thumbnailImage.alt =
+    product.name;
+
+
+thumbnail.appendChild(
+    thumbnailImage
+);
+
+
+thumbnailList.appendChild(
+    thumbnail
+);
+
+
+/* =====================================================
+   CHANGE IMAGE
+===================================================== */
+
+function changeImage(
+    image,
+    thumbnail
+) {
+
+    document.getElementById(
+        "mainProductImage"
+    ).src =
+        image;
+
+
+    document
+        .querySelectorAll(
+            ".thumbnail"
+        )
+        .forEach(
+            item => {
+
+                item.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    thumbnail.classList.add(
+        "active"
+    );
+
+}
+
+
+/* =====================================================
+   SIZE
+===================================================== */
+
+function selectSize(button) {
+
+    document
+        .querySelectorAll(
+            ".size-btn"
+        )
+        .forEach(
+            item => {
+
+                item.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    button.classList.add(
+        "active"
+    );
+
+}
+
+
+/* =====================================================
+   COLOR
+===================================================== */
+
+function selectColor(button) {
+
+    document
+        .querySelectorAll(
+            ".color-btn"
+        )
+        .forEach(
+            item => {
+
+                item.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    button.classList.add(
+        "active"
+    );
+
+}
+
+
+/* =====================================================
+   QUANTITY
+===================================================== */
+
+let quantity = 1;
+
+
+function increaseQuantity() {
+
+    quantity++;
+
+
+    document.getElementById(
+        "quantity"
+    ).textContent =
+        quantity;
+
+}
+
+
+function decreaseQuantity() {
+
+    if (quantity > 1) {
+
+        quantity--;
+
+    }
+
+
+    document.getElementById(
+        "quantity"
+    ).textContent =
+        quantity;
+
+}
+
+
+/* =====================================================
+   ADD TO CART
+===================================================== */
+
+function addToCart() {
+
+
+    const sizeButton =
+        document.querySelector(
+            ".size-btn.active"
+        );
+
+
+    const size =
+        sizeButton
+            ? sizeButton.textContent.trim()
+            : "M";
+
+
+    const colorButton =
+        document.querySelector(
+            ".color-btn.active"
+        );
+
+
+    let color =
+        "Black";
+
+
+    if (
+        colorButton &&
+        colorButton.classList.contains(
+            "color-grey"
+        )
+    ) {
+
+        color =
+            "Grey";
+
+    }
+
+
+    if (
+        colorButton &&
+        colorButton.classList.contains(
+            "color-white"
+        )
+    ) {
+
+        color =
+            "White";
+
+    }
+
+
+    const newItem = {
+
+        id:
+            product.id,
+
+        name:
+            product.name,
+
+        price:
+            product.price,
+
+        image:
+            product.image,
+
+        type:
+            product.type,
+
+        size:
+            size,
+
+        color:
+            color,
+
+        quantity:
+            quantity
+
+    };
+
+
+    let cart =
+        JSON.parse(
+            localStorage.getItem(
+                "cart"
+            )
+        ) || [];
+
+
+    const existingProduct =
+        cart.find(
+            item =>
+
+                item.id ==
+                newItem.id &&
+
+                item.size ==
+                newItem.size &&
+
+                item.color ==
+                newItem.color
+        );
+
+
+    if (existingProduct) {
+
+        existingProduct.quantity +=
+            newItem.quantity;
+
+    } else {
+
+        cart.push(
+            newItem
+        );
+
+    }
+
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+
+    alert(
+        "Produk berhasil ditambahkan ke cart!"
+    );
+
+}
+
+
+/* =====================================================
+   WISHLIST
+===================================================== */
+
+function wishlist() {
+
+    const button =
+        document.querySelector(
+            ".wishlist"
+        );
+
+
+    if (
+        button.textContent.trim()
+        ===
+        "♡"
+    ) {
+
+        button.textContent =
+            "♥";
+
+    } else {
+
+        button.textContent =
+            "♡";
+
+    }
+
+}
+
+</script>
+
+
+</body>
+
+</html>
